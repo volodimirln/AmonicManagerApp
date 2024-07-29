@@ -1,0 +1,53 @@
+﻿<Window x:Class="AmonicManagerApp.UI.Windows.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmonicManagerApp.UI.Windows"
+        mc:Ignorable="d"
+        Title="Amonic" WindowStartupLocation="CenterScreen"  Height="370" ResizeMode="NoResize"  Width="370">
+    <Grid>
+        <StackPanel>
+            <StackPanel Margin="10">
+
+
+                <Label Content="Подключение к серверу" HorizontalAlignment="Center" FontFamily="Montserrat" FontWeight="Bold" FontSize="18" />
+                <Label Content="Сервер" FontFamily="Montserrat" FontWeight="Medium" FontSize="16" Margin="0,10,0,0"/>
+                <TextBox x:Name="tbxServer"  Height="25" Padding="3">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Label Content="Пользователь" FontFamily="Montserrat" FontWeight="Medium" FontSize="16" Margin="0,5,0,0"/>
+                <TextBox x:Name="tbxUser"  Height="25" Padding="3">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Label Content="Пароль" FontFamily="Montserrat" FontWeight="Medium" FontSize="16" Margin="0,5,0,0"/>
+                <TextBox x:Name="tbxPassword"  Height="25" Padding="3" Margin="0,0,0,15" >
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Button Click="Button_Click" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" Foreground="#fff" Background="#0A84FF" BorderThickness="0" Padding="5" Content="Подключиться">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="7"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock Margin="0,10,0,0" FontFamily="Montserrat" FontWeight="Regular" FontSize="14" TextWrapping="Wrap" Text="Для авторизации через Windows укажите только MS SQL Serveer сервер "/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

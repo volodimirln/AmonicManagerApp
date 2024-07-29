@@ -1,0 +1,74 @@
+﻿<Window x:Class="AmonicManagerApp.UI.Windows.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmonicManagerApp.UI.Windows"
+        mc:Ignorable="d"
+        Title="AuthWindow" AllowsTransparency="True"
+Background="Transparent" WindowStyle="None" ResizeMode="NoResize"  Height="600" WindowStartupLocation="CenterScreen" Width="720">
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,720,600" RadiusX="15" RadiusY="15"/>
+    </Window.Clip>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/UI/images/background.png" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Amonic" FontSize="70" Margin="0,0,0,-3" Background="Transparent" FontFamily="Montserrat" FontWeight="Black" Foreground="#fff"/>
+            <Label Content="Пирелеты в любую точку мира" FontSize="18" FontFamily="Montserrat" FontWeight="SemiBold" Foreground="#fff" />
+        </StackPanel>
+        <Border Background="#fff" Grid.Column="1" CornerRadius="20,0,0,20">
+            <StackPanel VerticalAlignment="Center">
+                <Label Content="Добро пожаловать" FontFamily="Montserrat" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center"/>
+                <StackPanel Margin="10,15,10,0">
+                    <Label Content="Логин" FontSize="18" FontFamily="Montserrat" FontWeight="Medium" />
+                    <TextBox Text="artemov@amonic.ru" x:Name="tbxLogin" Height="30" FontSize="15" Padding="3,3,0,0" FontFamily="Montserrat" FontWeight="Medium" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Margin="0,7,0,0" Content="Пароль" FontSize="18" FontFamily="Montserrat" FontWeight="Medium" />
+                    <PasswordBox Password="v3bfjx"  x:Name="pbxPassword" Height="30" FontSize="15" Padding="3,3,0,0" FontFamily="Montserrat" FontWeight="Medium">
+                        <PasswordBox.Resources>
+                            <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                            <Border CornerRadius="10" BorderThickness="1" BorderBrush="#BDBDBD">
+                                                <ScrollViewer x:Name="PART_ContentHost"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </PasswordBox.Resources>
+                    </PasswordBox>
+                    <Button Click="Button_Click_1" Margin="0,17,0,0" Background="#0072FF" BorderThickness="0" Foreground="#fff" FontFamily="Montserrat" Height="30" FontWeight="Bold" FontSize="16" Content="Войти">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button Margin="0,10,0,0" Background="#BDBDBD" BorderThickness="0" Foreground="#fff" Click="Button_Click" FontFamily="Montserrat" Height="25" FontWeight="Medium" FontSize="14" Content="Закрыть">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                </StackPanel>
+            </StackPanel>
+             
+        </Border>
+    </Grid>
+</Window>

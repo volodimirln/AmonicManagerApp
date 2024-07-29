@@ -1,0 +1,152 @@
+﻿<Page x:Class="AmonicManagerApp.UI.Pages.Flying.FlyingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AmonicManagerApp.UI.Pages.Flying"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FlyingPage" Background="#F3F3F3" Loaded="Page_Loaded" >
+
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="50,20,50,0" Grid.Row="0" Orientation="Vertical">
+                <Label Content="Рейсы" FontFamily="Montserrat" FontWeight="Bold" FontSize="24" />
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,-25,0,0">
+                    <Image Width="30" Source="/UI/images/icons/icons8-person.png" />
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding UserName}" FontFamily="Inter" FontWeight="Bold" FontSize="14"/>
+                    <Label Content="{Binding User.Role.Title}" FontFamily="Inter" HorizontalAlignment="Right" Margin="0" Padding="0" FontWeight="Regular" Foreground="#757575" FontSize="12"/>
+                </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="50,0,50,0">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,-7">
+                <Button x:Name="btnInternational" Command="{Binding FlyingInternational}" Width="220" HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" Background="#fff" BorderThickness="0" Content="Международные рейсы">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                <Button Width="220" Margin="10,0,0,0" x:Name="btnInsaid" Command="{Binding FlyingInsaid}" Height="45"  HorizontalAlignment="Left" FontFamily="Montserrat" Foreground="#757575" FontWeight="Bold" FontSize="14" Background="#fff" BorderThickness="0" Content="Внутренние рейсы">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10,10,10,10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                <Label x:Name="lblSort" FontFamily="Montserrat"  VerticalAlignment="Center" Foreground="#000" FontWeight="Bold" FontSize="24" Margin="15,0,0,0"/>
+            </StackPanel>
+
+                <Border x:Name="brdMain" CornerRadius="0,10,10,10" MinHeight="540"  Padding="10" Background="#fff" >
+                <StackPanel Orientation="Vertical">
+                    <Label x:Name="lblNotData" HorizontalAlignment="Center" Margin="0,230,0,0" FontSize="28" FontFamily="Montserrat" Content="На данный момент данные отсуствуют" />
+                    <ListView SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding ListFlyings}" SelectedValue="{Binding SelectedFlying}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Background="#fff" BorderThickness="0" SelectedItem="{Binding SelectedFlying}"  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                            <Border CornerRadius="7"  Width="211" Height="235" Background="#EFEFEF" Padding="7" Margin="7">
+                                <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image HorizontalAlignment="Left" Width="25" Margin="0,0,7,0" Source="/UI/images/icons/icons8-blue-plane.png"/>
+                                            <StackPanel Orientation="Vertical">
+                                                <Label Content="{Binding TerminalDeparture.Airport.City}" FontFamily="Montserrat" Foreground="#000" Padding="0,0,0,3" FontWeight="Bold" FontSize="14"/>
+                                                <Label Content="чт, 24 дек." FontFamily="Montserrat" Foreground="#000" Padding="0" FontWeight="Medium" FontSize="10"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Vertical" Margin="50,0,0,0">
+                                                <Label Content="{Binding TerminalDeparture.Airport.Code}" FontFamily="Montserrat" Foreground="#000" FontSize="18" FontWeight="Bold"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+                                        <Border Background="#fff" Margin="0,12,0,0" CornerRadius="8" Height="25">
+                                            <StackPanel Orientation="Vertical">
+                                                <Label HorizontalAlignment="Center" Margin="0,-2,0,0" Content="{Binding way}"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="27"/>
+                                                <ColumnDefinition Width="170"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" VerticalAlignment="Top" Margin="5,7,0,0" Width="31" Source="/UI/images/icons/way.png"/>
+                                            <StackPanel Grid.Column="1">
+                                                <StackPanel>
+                                                    <Label Content="{Binding TimeDeparture}" FontFamily="Montserrat" Foreground="#000" FontSize="18" FontWeight="Bold" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Width="17" Source="/UI/images/icons/icons8-up.png" />
+                                                        <Label Content="{Binding PlaceDeparture}" FontFamily="Inter" FontWeight="Regular" FontSize="11"/>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Width="17" Source="/UI/images/icons/icons8-time.png" />
+                                                    <Label Content="{Binding DirectionFlyingTime}" FontFamily="Inter" FontWeight="Regular" FontSize="11"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel>
+                                                    <Label Content="{Binding TimeArrival}" FontFamily="Montserrat" Foreground="#000" FontSize="18" FontWeight="Bold" />
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Width="17" Source="/UI/images/icons/icons8-down.png" />
+                                                        <Label Content="{Binding PlaceArrival}" FontFamily="Inter" FontWeight="Regular" FontSize="11"/>
+                                                    </StackPanel>
+                                                    <Label Content="{Binding PlaneStrins}" FontFamily="Montserrat" Foreground="#000" FontSize="10" FontWeight="Medium" />
+                                                </StackPanel>
+
+                                            </StackPanel>
+                                        </Grid>
+                                        <!--<Label Content="{Binding Id}"/>
+                                    <Button Command="{Binding DelItem}" CommandParameter="{Binding }">Удалить</Button>-->
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </StackPanel>
+            </Border>
+                <Border BorderThickness="0" CornerRadius="7" Height="50" Margin="0,20,0,0" Background="#fff" Padding="5">
+                    <StackPanel Orientation="Horizontal">
+
+                    <Button Background="#fff" BorderThickness="0" Command="{Binding FlyingLast}">
+                            <Image Source="/UI/images/icons/icons8-last.png"/>
+                        </Button>
+                    <Label Content="{Binding FlyingsCount}" Margin="15,0,0,0" FontFamily="Montserrat" VerticalAlignment="Center" FontWeight="Regular" FontSize="18"/>
+                    <Label Content="{Binding FlyingsPagesCount}" Margin="15,0,0,0" FontFamily="Montserrat" VerticalAlignment="Center" FontWeight="Regular" FontSize="18"/>
+
+                    <Button x:Name="btnAdd" Command="{Binding AddEditFlying}" Background="#0A84FF" Margin="5,0,0,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" BorderThickness="0" Width="180" Height="30"  Content="Добавить новый рейс" Foreground="#fff">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="7"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" Margin="5,0,0,0">
+                        <Button Background="#0A84FF" x:Name="btnCompleteFlyight" Margin="5,0,0,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" BorderThickness="0" Width="180" Height="30" Command="{Binding FlyingCompleted}"  Content="Выполненые рейсы" Foreground="#fff">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="7"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        <Button Background="#0A84FF" Margin="5,0,20,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" BorderThickness="0" Width="180" Height="30" Command="{Binding FlyingCanceled}"  Content="Отменные рейсы" Foreground="#fff">
+                                <Button.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="7"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button Background="#fff" BorderThickness="0" Command="{Binding FlyingNext}">
+                                <Image Source="/UI/images/icons/icons8-next.png"/>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+</Page>

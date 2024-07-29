@@ -1,0 +1,82 @@
+﻿<Page x:Class="AmonicManagerApp.UI.Pages.Users.AddEdit.AddPricingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AmonicManagerApp.UI.Pages.Users.AddEdit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPricingPage">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="50,20,50,0" Grid.Row="0" Orientation="Vertical">
+                <Label Content="Места" FontFamily="Montserrat" FontWeight="Bold" FontSize="24" />
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,-25,0,0">
+                    <Image Width="30" Source="/UI/images/icons/icons8-person.png" />
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding UserName}" FontFamily="Inter" FontWeight="Bold" FontSize="14"/>
+                        <Label Content="{Binding User.Role.Title}" FontFamily="Inter" HorizontalAlignment="Right" Margin="0" Padding="0" FontWeight="Regular" Foreground="#757575" FontSize="12"/>
+
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="50,0,50,0">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <Border CornerRadius="8,8,0,0" Height="45"  x:Name="AddItem" Width="220"  HorizontalAlignment="Left" Background="#fff" BorderThickness="0" >
+                        <Label x:Name="lblAdd" FontFamily="Montserrat" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Content="Добавить места"/>
+                    </Border>
+                </StackPanel>
+
+                <Border CornerRadius="0,10,10,10"   Padding="10" Background="#fff" >
+                    <StackPanel x:Name="stcNewPricing">
+                        <Label Content="Рейс" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                        <ComboBox SelectionChanged="cmbFlying_SelectionChanged" FontFamily="Montserrat" FontWeight="Medium" Height="27" FontSize="14" Style="{StaticResource ComboBoxSelectedIten}" x:Name="cmbFlying" SelectedItem="{Binding Flying}" DisplayMemberPath="Info"  />
+                        <Label Content="Класс" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                        <ComboBox FontFamily="Montserrat" FontWeight="Medium" Height="27" FontSize="14" Style="{StaticResource ComboBoxSelectedIten}" x:Name="cmPricing" SelectedValue="{Binding Class}" SelectedValuePath="Tag">
+                            <ComboBoxItem Tag="Эконом" Content="Эконом"/>
+                            <ComboBoxItem Tag="Бизнес" Content="Бизнес"/>
+                        </ComboBox>
+                        <Label Content="Номер места" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Text="{Binding Place}" Height="30"  Padding="5" Margin="0,0,0,7">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                    <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Label Content="Стоимость одного места" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Text="{Binding Price}" Height="30"  Padding="5" Margin="0,0,0,7">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                    <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Button Command="{Binding AddItem}" CommandParameter="{Binding }" Background="#0A84FF"  Margin="0,15,0,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" Foreground="#fff" BorderThickness="0" Padding="5"  Content="Добавить" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="7"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button Background="#0A84FF" Margin="0,15,0,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" Foreground="#fff" BorderThickness="0" Padding="5" Command="{Binding AddEditUsers}" x:Name="btnBack" CommandParameter="{Binding }" Content="Назад" >
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="7"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Image Width="880"  x:Name="imgScheme"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,69 @@
+﻿<Window x:Class="AmonicManagerApp.UI.Windows.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmonicManagerApp.UI.Windows"
+        mc:Ignorable="d"
+        Title="Amonic" Background="#F3F3F3" Height="825" MaxWidth="1250"  Width="1200" WindowStartupLocation="CenterScreen"  MinWidth="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="17" CornerRadius="8" Background="#fff">
+            <StackPanel>
+            <Border  BorderThickness="0,0,0,1" BorderBrush="#000">
+                <StackPanel>
+                <Label Content="Amonic" HorizontalAlignment="Center"  FontFamily="Montserrat" FontWeight="ExtraBlack" FontSize="34" Margin="0,20,0,20"/>
+                <Button Background="#fff" Opacity="0.6" Foreground="#000" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,12,0,12" Command="{Binding Home}">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                        <Image HorizontalAlignment="Left" Width="17" Source="/UI/images/icons/icons8-home-50.png"/>
+                        <Label  Content="Главная"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                    </StackPanel>
+                </Button>
+                <Button Background="#fff" Opacity="0.6" Margin="10,12,0,12" BorderThickness="0" HorizontalAlignment="Left"  Command="{Binding Flying}">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                        <Image HorizontalAlignment="Left" Width="16" Source="/UI/images/icons/icons8-vertical.png"/>
+                        <Label  Content="Рейсы"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                    </StackPanel>
+                </Button>
+                <Button Background="#fff" Opacity="0.6" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,12,0,12"  Command="{Binding Planes}">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                        <Image HorizontalAlignment="Left" Width="21" Source="/UI/images/icons/icons8-flying-horizontal.png"/>
+                        <Label  Content="Самолеты"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                    </StackPanel>
+                </Button>
+                <Button Background="#fff" Opacity="0.6" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,12,0,12"  Command="{Binding Airports}">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                        <Image HorizontalAlignment="Left" Width="21" Source="/UI/images/icons/icons8-landing.png"/>
+                        <Label  Content="Аэропорты"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                    </StackPanel>
+                </Button>
+                <Button Background="#fff"  Opacity="0.6" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,12,0,27"  Command="{Binding Directions}">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                        <Image HorizontalAlignment="Left" Width="21" Source="/UI/images/icons/icons8-way.png"/>
+                        <Label  Content="Направления"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            </Border>
+                <StackPanel>
+                    <Button Background="#fff" Opacity="0.6" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,27,0,12"  Command="{Binding Settings}">
+                        <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                            <Image HorizontalAlignment="Left" Width="21" Source="/UI/images/icons/icons8-settings.png"/>
+                            <Label  Content="Настройки"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Button>
+                    <Button Background="#fff" Opacity="0.6" Click="Button_Click" FontFamily="Montserrat" BorderThickness="0" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" Margin="10,12,0,12"  Command="{Binding Directions}">
+                        <StackPanel Orientation="Horizontal" Margin="10,0,0,0"   >
+                            <Image HorizontalAlignment="Left" Width="21" Source="/UI/images/icons/icons8-exit.png"/>
+                            <Label  Content="Выход"  FontFamily="Montserrat" FontSize="16" HorizontalAlignment="Left" FontWeight="SemiBold" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Frame  Content="{Binding CurrentPage}" Grid.Column="1"  NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

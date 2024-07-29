@@ -1,0 +1,128 @@
+﻿<Page x:Class="AmonicManagerApp.UI.Pages.Settings.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AmonicManagerApp.UI.Pages.Settings"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      Title="SettingsPage">
+
+  
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="50,20,50,0" Grid.Row="0" Orientation="Vertical">
+            <Label Content="Настройки" FontFamily="Montserrat" FontWeight="Bold" FontSize="24" />
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,-25,0,0">
+                <Image Width="30" Source="/UI/images/icons/icons8-person.png" />
+                <StackPanel Orientation="Vertical">
+                    <Label Content="{Binding UserName}" FontFamily="Inter" FontWeight="Bold" FontSize="14"/>
+                    <Label Content="{Binding User.Role.Title}" FontFamily="Inter" HorizontalAlignment="Right" Margin="0" Padding="0" FontWeight="Regular" Foreground="#757575" FontSize="12"/>
+
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="50,0,50,0">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,-3">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,-7">
+                    <Button x:Name="btnActive" Height="65" Command="{Binding DirectionsActiveCommand}" Width="220" Click="btnActive_Click"  HorizontalAlignment="Left" FontFamily="Montserrat" FontWeight="Bold" FontSize="14" Background="#fff" BorderThickness="0" Content="Пользователь">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <!--<Button Width="220" Margin="10,0,0,0" x:Name="btnInActive" Click="btnInActive_Click"  Command="{Binding DirectionsInActiveCommand}" Height="45"  HorizontalAlignment="Left" FontFamily="Montserrat" Foreground="#757575" FontWeight="Bold" FontSize="14" Background="#fff" BorderThickness="0" Content="Сервер">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10,10,10,10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>-->
+                </StackPanel>
+            </StackPanel>
+            <Border CornerRadius="0,10,10,10" Background="#fff"  Height="630"   Padding="45,0,45,25" >
+                <StackPanel DataContext="{Binding User}" Margin="0,15,0,0">
+                    <Label Content="Имя"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Name}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Фамилия"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Surname}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Отчество"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Patronymic}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Логин" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Login}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Телефон"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Telephone}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Новый пароль"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding Password}" Height="30"  Padding="5" Margin="0,0,0,7" >
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Повторить пароль"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBox Text="{Binding PasswordRepeat}" Height="30"  Padding="5" Margin="0,0,0,7">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                                <Setter Property="BorderBrush" Value="#BDBDBD"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Label Content="Роль"  FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding Role.Title}"  FontFamily="Montserrat" FontWeight="Medium" FontSize="14"/>
+                    <Label Content="Дата последнего изменения" FontFamily="Montserrat" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding ChangeDate, StringFormat=dd.MM.yyy HH:mm}" FontFamily="Montserrat" FontWeight="Medium" FontSize="14" />
+                    <Button Margin="0,15,0,0" FontFamily="Helvetica" FontSize="14" FontWeight="Regular" Foreground="#fff" BorderThickness="0" Padding="5" Command="{Binding EditItem}" CommandParameter="{Binding }" Content="Сохранить" Background="#0A84FF">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="7"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
